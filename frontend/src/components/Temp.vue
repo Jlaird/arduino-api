@@ -20,7 +20,7 @@ export default {
         chart: {
           id: 'basic-bar'
         },
-        colors: ["#000"],
+        colors: ["#660000"],
         plotOptions: {
           radialBar: {
             startAngle: -135,
@@ -49,7 +49,7 @@ export default {
         type: "gradient",
         gradient: {
           type: "horizontal",
-          gradientToColors: ["#ff0000"],
+          gradientToColors: ["#B20000"],
           stops: [0, 50]
         }
        },
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     async createPost() {
-      const temp = await PostService.getPosts();
+      const temp = await PostService.getPosts('{"type": "temp"}', 1);
       this.series = [temp[0].val]
     }
   },

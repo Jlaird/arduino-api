@@ -1,13 +1,16 @@
 import axios from "axios";
 
-const url = 'http://34.231.137.187/api/posts';
+var url = 'http://localhost:3000/api/posts';
 
 class PostService {
   //Get Posts
-  static getPosts() {
+  static getPosts(query, limit = 1) {
     return new Promise(async (resolve, rejects) => {
       try {
-        const res = await axios.get(url);
+        const apiurl = (query)? `${url}?query=${query}&limit=${limit}` : url;
+        /*eslint no-console: ["error", { allow: ["log", "error"] }] */
+        console.log(url);
+        const res = await axios.get(apiurl);
         const data = res.data;
         resolve(
           data.map(posts => ({

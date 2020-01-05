@@ -20,7 +20,7 @@ export default {
         chart: {
           id: 'basic-bar'
         },
-        colors: ["#000"],
+        colors: ["#000066"],
         plotOptions: {
           radialBar: {
             startAngle: -135,
@@ -49,7 +49,7 @@ export default {
         type: "gradient",
         gradient: {
           type: "horizontal",
-          gradientToColors: ["#0000ff"],
+          gradientToColors: ["#0000cc"],
           stops: [0, 50]
         }
        },
@@ -59,13 +59,13 @@ export default {
     }
   },
   methods: {
-    async createPost() {
-      const temp = await PostService.getPosts();
+    async getPosts() {
+      const temp = await PostService.getPosts('{"type": "humidity"}', 1);
       this.series = [temp[0].val]
     }
   },
   created: function(){
-    this.createPost()
+    this.getPosts()
   }
 }
 </script>

@@ -7,7 +7,7 @@ const router = express.Router();
 // Get Posts
 router.get('/', async (req, res) => {
   const posts = await loadPostsCollection();
-  res.send(await posts.find({}).toArray());
+  res.send(await posts.find(JSON.parse(req.query.query)).sort({"createdAt": -1}).limit(parseInt(req.query.limit)).toArray());
 });
 
 // Add Post
