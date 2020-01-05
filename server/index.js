@@ -10,7 +10,13 @@ app.use(cors());
 
 const posts =  require('./routes/api/posts');
 
-app.use('/api/posts', posts)
+app.use('/api/posts', posts);
+
+// Hanndle Public Folder
+if (process.env.NODE_ENV === 'prod') {
+  app.use(express.static(__dirname + '/public/'));
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
 
 const port = process.env.PORT || 3000;
 

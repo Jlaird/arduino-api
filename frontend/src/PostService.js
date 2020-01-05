@@ -1,6 +1,6 @@
 import axios from "axios";
 
-var url = 'http://localhost:3000/api/posts';
+var url = '/api/posts';
 
 class PostService {
   //Get Posts
