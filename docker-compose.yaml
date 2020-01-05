@@ -14,13 +14,14 @@ services:
     - .:/app
     - ./node_modules:/app/node_modules:delegated
     working_dir: /app
-    command: ['npm', 'run', 'dev']
+    command: ['npm', 'run', 'start']
+    restart: always
     depends_on:
       - mongo
   mongo:
     image: mongo
-    ports:
-      - "27017:27017"
+    volumes:
+      - ./data:/data/db
     expose:
       - "27017"
     restart: always
