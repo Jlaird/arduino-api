@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
   await posts.insertOne({
     type: req.body.type,
     val: req.body.val,
+    device: req.body.device,
     createdAt: new Date()
   });
   res.status(201).send();
